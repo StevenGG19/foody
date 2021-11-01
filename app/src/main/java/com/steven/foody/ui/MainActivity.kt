@@ -1,10 +1,11 @@
-package com.steven.foody
+package com.steven.foody.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.steven.foody.R
 import com.steven.foody.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
