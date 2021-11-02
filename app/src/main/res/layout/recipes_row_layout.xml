@@ -97,7 +97,7 @@
                 android:id="@+id/txt_leaf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="100"
+                android:text="@string/vegan"
                 android:textColor="@color/mediumGray"
                 android:textAlignment="center"
                 app:layout_constraintTop_toBottomOf="@id/img_leaf"
