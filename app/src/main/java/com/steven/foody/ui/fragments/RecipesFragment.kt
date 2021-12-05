@@ -6,15 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.steven.foody.viewmodels.MainViewModel
 import com.steven.foody.adapters.RecipesAdapter
 import com.steven.foody.databinding.FragmentRecipesBinding
-import com.steven.foody.util.Constants.API_KEY
 import com.steven.foody.util.NetworkResult
+import com.steven.foody.util.observeOnce
 import com.steven.foody.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -45,7 +44,7 @@ class RecipesFragment : Fragment() {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            viewModel.readRecipes.observe(viewLifecycleOwner, { database ->
+            viewModel.readRecipes.observeOnce(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty()) {
                     Log.d("recipes", "database")
                     adapter.setData(database.first().foodRecipe)
@@ -80,10 +79,16 @@ class RecipesFragment : Fragment() {
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
                     loadDataFromCache()
-                    Toast.makeText(requireContext(), response.message.toString(), Toast.LENGTH_SHORT).show()
+                    messageError(response.message.toString())
                 }
             }
         })
+    }
+
+    private fun messageError(message: String) {
+        binding.imgError.visibility = View.VISIBLE
+        binding.txtError.visibility = View.VISIBLE
+        binding.txtError.text = message
     }
 
     private fun setupRecyclerView() {

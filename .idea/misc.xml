@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Steven/AndroidStudioProjects/kotlin/Foody/app/src/main/res/drawable/ic_error_placeholder.xml" value="0.17864583333333334" />
         <entry key="..\:/Users/Steven/AndroidStudioProjects/kotlin/Foody/app/src/main/res/drawable/ic_sad.xml" value="0.175" />
         <entry key="..\:/Users/Steven/AndroidStudioProjects/kotlin/Foody/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/Steven/AndroidStudioProjects/kotlin/Foody/app/src/main/res/layout/fragment_favorite_recipes.xml" value="0.15833333333333333" />

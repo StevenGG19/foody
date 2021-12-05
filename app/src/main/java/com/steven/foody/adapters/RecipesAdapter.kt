@@ -43,6 +43,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
             binding.txtTime.text = recipe.readyInMinutes.toString()
             binding.imgRecipes.load(recipe.image) {
                 crossfade(600)
+                error(R.drawable.ic_error_placeholder)
             }
             if (recipe.vegan) {
                 binding.txtLeaf.setTextColor(
