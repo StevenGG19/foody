@@ -7,9 +7,17 @@
 
     <fragment
         android:id="@+id/recipesFragment"
-        android:name="com.steven.foody.ui.fragments.RecipesFragment"
+        android:name="com.steven.foody.ui.fragments.recipes.RecipesFragment"
         android:label="Recipes"
-        tools:layout="@layout/fragment_recipes" />
+        tools:layout="@layout/fragment_recipes" >
+        <action
+            android:id="@+id/action_recipesFragment_to_bottomSheetFragment"
+            app:destination="@id/bottomSheetFragment" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteRecipesFragment"
         android:name="com.steven.foody.ui.fragments.FavoriteRecipesFragment"
@@ -20,4 +28,13 @@
         android:name="com.steven.foody.ui.fragments.FoodJokeFragment"
         android:label="Food joke"
         tools:layout="@layout/fragment_food_joke" />
+    <dialog
+        android:id="@+id/bottomSheetFragment"
+        android:name="com.steven.foody.ui.fragments.recipes.BottomSheetFragment"
+        android:label="bottom_sheet"
+        tools:layout="@layout/bottom_sheet" >
+        <action
+            android:id="@+id/action_bottomSheetFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </dialog>
 </navigation>

@@ -1,4 +1,4 @@
-package com.steven.foody.ui.fragments
+package com.steven.foody.ui.fragments.recipes
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.steven.foody.R
 import com.steven.foody.viewmodels.MainViewModel
 import com.steven.foody.adapters.RecipesAdapter
 import com.steven.foody.databinding.FragmentRecipesBinding
@@ -25,6 +28,7 @@ class RecipesFragment : Fragment() {
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
     private val adapter by lazy { RecipesAdapter() }
+    private val args by navArgs<RecipesFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +43,16 @@ class RecipesFragment : Fragment() {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
         setupRecyclerView()
         readDatabase()
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_recipesFragment_to_bottomSheetFragment)
+        }
         return binding.root
     }
 
     private fun readDatabase() {
         lifecycleScope.launch {
             viewModel.readRecipes.observeOnce(viewLifecycleOwner, { database ->
-                if (database.isNotEmpty()) {
+                if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     Log.d("recipes", "database")
                     adapter.setData(database.first().foodRecipe)
                     hideShimmerEffect()

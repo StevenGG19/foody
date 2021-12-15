@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -77,5 +78,5 @@ dependencies {
     androidTestImplementation "androidx.room:room-testing:2.3.0"
 
     // DataStore
-    implementation 'androidx.datastore:datastore:1.0.0'
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
 }
