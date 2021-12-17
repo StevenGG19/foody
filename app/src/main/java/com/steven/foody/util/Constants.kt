@@ -5,6 +5,7 @@ object Constants {
     // API queries keys
     const val API_KEY = "############################"
     const val BASE_URL = "https://api.spoonacular.com"
+    const val SEARCH_QUERY = "query"
     const val QUERY_NUMBER = "number"
     const val QUERY_API_KEY = "apiKey"
     const val QUERY_TYPE = "type"
