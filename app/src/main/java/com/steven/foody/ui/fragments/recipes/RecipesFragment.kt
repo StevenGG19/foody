@@ -15,10 +15,12 @@ import com.steven.foody.R
 import com.steven.foody.viewmodels.MainViewModel
 import com.steven.foody.adapters.RecipesAdapter
 import com.steven.foody.databinding.FragmentRecipesBinding
+import com.steven.foody.util.NetworkListener
 import com.steven.foody.util.NetworkResult
 import com.steven.foody.util.observeOnce
 import com.steven.foody.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -29,6 +31,7 @@ class RecipesFragment : Fragment() {
     private val binding get() = _binding!!
     private val adapter by lazy { RecipesAdapter() }
     private val args by navArgs<RecipesFragmentArgs>()
+    private lateinit var networkListener: NetworkListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,14 +40,34 @@ class RecipesFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+
         setupRecyclerView()
-        readDatabase()
+
+        recipesViewModel.readBackOnline.observe(viewLifecycleOwner, {
+            recipesViewModel.backOnline = it
+        })
+
+        lifecycleScope.launch {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                    .collect { status ->
+                        Log.d("Network", status.toString())
+                        recipesViewModel.networkStatus = status
+                        recipesViewModel.showNetworkStatus()
+                        readDatabase()
+                    }
+        }
+
         binding.floatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_bottomSheetFragment)
+            if (recipesViewModel.networkStatus) {
+                findNavController().navigate(R.id.action_recipesFragment_to_bottomSheetFragment)
+            } else {
+                recipesViewModel.showNetworkStatus()
+            }
         }
         return binding.root
     }
@@ -77,7 +100,7 @@ class RecipesFragment : Fragment() {
         Log.d("recipes", "Api")
         viewModel.getRecipes(recipesViewModel.applyQueries())
         viewModel.recipesResponse.observe(viewLifecycleOwner, { response ->
-            when(response) {
+            when (response) {
                 is NetworkResult.Loading -> showShimmerEffect()
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
