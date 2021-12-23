@@ -14,8 +14,10 @@ import com.steven.foody.R
 import com.steven.foody.viewmodels.MainViewModel
 import com.steven.foody.adapters.RecipesAdapter
 import com.steven.foody.databinding.FragmentRecipesBinding
+import com.steven.foody.models.Result
 import com.steven.foody.util.NetworkListener
 import com.steven.foody.util.NetworkResult
+import com.steven.foody.util.OnRecipeClickListener
 import com.steven.foody.util.observeOnce
 import com.steven.foody.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,12 +25,12 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
+class RecipesFragment : Fragment(), SearchView.OnQueryTextListener, OnRecipeClickListener<Result> {
     private lateinit var viewModel: MainViewModel
     private lateinit var recipesViewModel: RecipesViewModel
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
-    private val adapter by lazy { RecipesAdapter() }
+    private val adapter by lazy { RecipesAdapter(this@RecipesFragment) }
     private val args by navArgs<RecipesFragmentArgs>()
     private lateinit var networkListener: NetworkListener
 
@@ -168,5 +170,11 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private fun hideShimmerEffect() {
         binding.recyclerView.hideShimmer()
+    }
+
+    override fun onRecipeClick(recipe: Result) {
+        Log.d("recipesClick", recipe.title)
+        val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsActivity(recipe)
+        findNavController().navigate(action)
     }
 }

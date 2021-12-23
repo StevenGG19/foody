@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.overview.OverviewFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_main"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_time"
+            app:layout_constraintBottom_toTopOf="@id/txt_time"
+            app:layout_constraintEnd_toEndOf="@id/txt_time"
+            app:layout_constraintStart_toStartOf="@id/txt_time" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintBottom_toTopOf="@id/txt_likes"
+            app:layout_constraintEnd_toEndOf="@id/txt_likes"
+            app:layout_constraintStart_toStartOf="@id/txt_likes" />
+
+        <ImageView
+            android:id="@+id/img_check_mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_check_circle"
+            app:layout_constraintEnd_toStartOf="@+id/txt_vegetable"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintTop_toBottomOf="@id/txt_title"
+            app:tint="@color/darkGray" />
+
+        <ImageView
+            android:id="@+id/img_check_mark_vegan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_check_circle"
+            app:layout_constraintStart_toStartOf="@id/img_check_mark"
+            app:layout_constraintTop_toBottomOf="@id/img_check_mark"
+            app:tint="@color/darkGray" />
+
+        <ImageView
+            android:id="@+id/img_check_mark_gluten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_check_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/img_check_mark"
+            app:layout_constraintEnd_toStartOf="@+id/txt_gluten"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txt_vegetable"
+            app:layout_constraintTop_toTopOf="@+id/img_check_mark"
+            app:tint="@color/darkGray" />
+
+        <ImageView
+            android:id="@+id/img_check_mark_healthy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/ic_check_circle"
+            app:layout_constraintBottom_toBottomOf="@+id/img_check_mark_gluten"
+            app:layout_constraintEnd_toStartOf="@+id/txt_healthy"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txt_gluten"
+            app:layout_constraintTop_toTopOf="@+id/img_check_mark_gluten"
+            app:tint="@color/darkGray" />
+
+        <ImageView
+            android:id="@+id/img_check_mark_dairy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_check_circle"
+            app:layout_constraintStart_toStartOf="@id/img_check_mark_gluten"
+            app:layout_constraintTop_toBottomOf="@id/img_check_mark_gluten"
+            app:tint="@color/darkGray" />
+
+        <ImageView
+            android:id="@+id/img_check_mark_cheap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_check_circle"
+            app:layout_constraintStart_toStartOf="@id/img_check_mark_healthy"
+            app:layout_constraintTop_toBottomOf="@id/img_check_mark_healthy"
+            app:tint="@color/darkGray" />
+
+        <TextView
+            android:id="@+id/txt_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/img_main"
+            app:layout_constraintEnd_toEndOf="@id/img_main"
+            tools:text="100" />
+
+        <TextView
+            android:id="@+id/txt_likes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/txt_time"
+            app:layout_constraintEnd_toStartOf="@id/txt_time"
+            app:layout_constraintTop_toTopOf="@id/txt_time"
+            tools:text="100" />
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="@font/courgette"
+            android:textColor="@color/darkGray"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_main"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/txt_vegetable"
+            android:layout_width="83dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/vegetarian"
+            android:textColor="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/img_check_mark"
+            app:layout_constraintEnd_toStartOf="@+id/img_check_mark_gluten"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/img_check_mark"
+            app:layout_constraintTop_toTopOf="@id/img_check_mark" />
+
+        <TextView
+            android:id="@+id/txt_vegan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/vegan"
+            android:textColor="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/img_check_mark_vegan"
+            app:layout_constraintStart_toEndOf="@id/img_check_mark_vegan"
+            app:layout_constraintTop_toTopOf="@id/img_check_mark_vegan" />
+
+        <TextView
+            android:id="@+id/txt_gluten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/gluten_free"
+            android:textColor="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/img_check_mark_gluten"
+            app:layout_constraintEnd_toStartOf="@+id/img_check_mark_healthy"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/img_check_mark_gluten"
+            app:layout_constraintTop_toTopOf="@id/img_check_mark_gluten" />
+
+        <TextView
+            android:id="@+id/txt_healthy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/healthy"
+            android:textColor="@color/darkGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/img_check_mark_healthy"
+            app:layout_constraintStart_toEndOf="@+id/img_check_mark_healthy"
+            app:layout_constraintTop_toTopOf="@id/img_check_mark_healthy" />
+
+        <TextView
+            android:id="@+id/txt_dairy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/dairy_free"
+            android:textColor="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/img_check_mark_dairy"
+            app:layout_constraintStart_toEndOf="@id/img_check_mark_dairy"
+            app:layout_constraintTop_toTopOf="@id/img_check_mark_dairy" />
+
+        <TextView
+            android:id="@+id/txt_cheap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/cheap"
+            android:textColor="@color/darkGray"
+            app:layout_constraintBottom_toBottomOf="@id/img_check_mark_cheap"
+            app:layout_constraintStart_toEndOf="@id/img_check_mark_cheap"
+            app:layout_constraintTop_toTopOf="@id/img_check_mark_cheap" />
+
+        <TextView
+            android:id="@+id/txt_summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_dairy"
+            tools:text="Summary" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/gradient_overlay"
+            app:layout_constraintBottom_toBottomOf="@id/img_main"
+            app:layout_constraintEnd_toEndOf="@id/img_main"
+            app:layout_constraintStart_toStartOf="@id/img_main" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

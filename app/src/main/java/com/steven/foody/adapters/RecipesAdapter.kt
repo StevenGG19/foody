@@ -1,5 +1,6 @@
 package com.steven.foody.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -10,15 +11,23 @@ import com.steven.foody.R
 import com.steven.foody.databinding.RecipesRowLayoutBinding
 import com.steven.foody.models.FoodRecipe
 import com.steven.foody.models.Result
+import com.steven.foody.util.OnRecipeClickListener
 import com.steven.foody.util.RecipesDiffUtil
+import com.steven.foody.util.parseHtml
 
-class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
+class RecipesAdapter(private val itemClickListener: OnRecipeClickListener<Result>) : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
     private var recipes = emptyList<Result>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
             RecipesRowLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(itemBinding)
+        val holder = ViewHolder(itemBinding)
+        itemBinding.root.setOnClickListener {
+            val position = holder.adapterPosition.takeIf { it != DiffUtil.DiffResult.NO_POSITION }
+                ?: return@setOnClickListener
+            itemClickListener.onRecipeClick(recipes[position])
+        }
+        return holder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -38,7 +47,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: Result) {
             binding.txtTitle.text = recipe.title
-            binding.txtDescription.text = recipe.summary
+            binding.txtDescription.text = recipe.summary.parseHtml()
             binding.txtFavorite.text = recipe.aggregateLikes.toString()
             binding.txtTime.text = recipe.readyInMinutes.toString()
             binding.imgRecipes.load(recipe.image) {
