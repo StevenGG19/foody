@@ -19,4 +19,8 @@
     <color name="chipTextColor">@color/darkGray</color>
     // TapLayout
     <color name="actionBarBackgroundColor">@color/colorPrimary</color>
+    // Ingredients row
+    <color name="strokeColor">@color/lightMediumGray</color>
+    <color name="cardBackground">@color/white</color>
+    <color name="titleColor">@color/darker</color>
 </resources>

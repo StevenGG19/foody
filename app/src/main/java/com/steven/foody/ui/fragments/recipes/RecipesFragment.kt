@@ -173,7 +173,6 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener, OnRecipeClic
     }
 
     override fun onRecipeClick(recipe: Result) {
-        Log.d("recipesClick", recipe.title)
         val action = RecipesFragmentDirections.actionRecipesFragmentToDetailsActivity(recipe)
         findNavController().navigate(action)
     }

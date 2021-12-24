@@ -5,6 +5,7 @@ object Constants {
     // API queries keys
     const val API_KEY = "############################"
     const val BASE_URL = "https://api.spoonacular.com"
+    const val BASE_IMAGE_URL = "https://spoonacular.com/cdn/ingredients_100x100/"
     const val SEARCH_QUERY = "query"
     const val QUERY_NUMBER = "number"
     const val QUERY_API_KEY = "apiKey"
@@ -12,6 +13,7 @@ object Constants {
     const val QUERY_DIET = "diet"
     const val QUERY_ADD_RECIPE_INFORMATION = "addRecipeInformation"
     const val QUERY_FILL_INGREDIENTS = "fillIngredients"
+    const val RECIPE_RESULT_KEY = "recipeBundle"
     // Room database
     const val DATABASE_NAME = "recipes_database"
     const val RECIPES_TABLE = "recipes_table"

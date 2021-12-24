@@ -21,22 +21,6 @@
             tools:src="@tools:sample/avatars" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_time"
-            app:layout_constraintBottom_toTopOf="@id/txt_time"
-            app:layout_constraintEnd_toEndOf="@id/txt_time"
-            app:layout_constraintStart_toStartOf="@id/txt_time" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_favorite"
-            app:layout_constraintBottom_toTopOf="@id/txt_likes"
-            app:layout_constraintEnd_toEndOf="@id/txt_likes"
-            app:layout_constraintStart_toStartOf="@id/txt_likes" />
-
-        <ImageView
             android:id="@+id/img_check_mark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,32 +87,6 @@
             app:layout_constraintStart_toStartOf="@id/img_check_mark_healthy"
             app:layout_constraintTop_toBottomOf="@id/img_check_mark_healthy"
             app:tint="@color/darkGray" />
-
-        <TextView
-            android:id="@+id/txt_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/img_main"
-            app:layout_constraintEnd_toEndOf="@id/img_main"
-            tools:text="100" />
-
-        <TextView
-            android:id="@+id/txt_likes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/txt_time"
-            app:layout_constraintEnd_toStartOf="@id/txt_time"
-            app:layout_constraintTop_toTopOf="@id/txt_time"
-            tools:text="100" />
 
         <TextView
             android:id="@+id/txt_title"
@@ -237,6 +195,48 @@
             app:layout_constraintBottom_toBottomOf="@id/img_main"
             app:layout_constraintEnd_toEndOf="@id/img_main"
             app:layout_constraintStart_toStartOf="@id/img_main" />
+
+        <TextView
+            android:id="@+id/txt_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/img_main"
+            app:layout_constraintEnd_toEndOf="@id/img_main"
+            tools:text="100" />
+
+        <TextView
+            android:id="@+id/txt_likes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/txt_time"
+            app:layout_constraintEnd_toStartOf="@id/txt_time"
+            app:layout_constraintTop_toTopOf="@id/txt_time"
+            tools:text="100" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_time"
+            app:layout_constraintBottom_toTopOf="@id/txt_time"
+            app:layout_constraintEnd_toEndOf="@id/txt_time"
+            app:layout_constraintStart_toStartOf="@id/txt_time" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite"
+            app:layout_constraintBottom_toTopOf="@id/txt_likes"
+            app:layout_constraintEnd_toEndOf="@id/txt_likes"
+            app:layout_constraintStart_toStartOf="@id/txt_likes" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

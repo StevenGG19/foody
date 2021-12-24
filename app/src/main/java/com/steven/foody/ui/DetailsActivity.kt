@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.navigation.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.steven.foody.R
@@ -13,6 +12,7 @@ import com.steven.foody.databinding.ActivityDetailsBinding
 import com.steven.foody.ui.fragments.ingredients.IngredientsFragment
 import com.steven.foody.ui.fragments.instructions.InstructionsFragment
 import com.steven.foody.ui.fragments.overview.OverviewFragment
+import com.steven.foody.util.Constants.RECIPE_RESULT_KEY
 
 class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
@@ -32,7 +32,7 @@ class DetailsActivity : AppCompatActivity() {
         val titles = arrayListOf("Overview", "Ingredients", "Instructions")
 
         val resultBundle = Bundle()
-        resultBundle.putParcelable("recipeBundle", args.result)
+        resultBundle.putParcelable(RECIPE_RESULT_KEY, args.result)
 
         val pagerAdapter = PagerAdapter(
             resultBundle,

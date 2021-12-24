@@ -12,6 +12,7 @@ import coil.load
 import com.steven.foody.R
 import com.steven.foody.databinding.FragmentOverviewBinding
 import com.steven.foody.models.Result
+import com.steven.foody.util.Constants.RECIPE_RESULT_KEY
 import com.steven.foody.util.parseHtml
 
 class OverviewFragment : Fragment() {
@@ -24,7 +25,7 @@ class OverviewFragment : Fragment() {
     ): View {
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
         val args = arguments
-        val myBundle: Result? = args?.getParcelable("recipeBundle")
+        val myBundle: Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
         binding.imgMain.load(myBundle?.image)
         binding.txtTitle.text = myBundle?.title
