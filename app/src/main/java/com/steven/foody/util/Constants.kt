@@ -17,6 +17,7 @@ object Constants {
     // Room database
     const val DATABASE_NAME = "recipes_database"
     const val RECIPES_TABLE = "recipes_table"
+    const val FAVORITE_RECIPE_TABLE = "favorite_table"
     // Bottom sheet and preferences
     const val MAIN_COURSE = "main course"
     const val GLUTEN_FREE = "gluten free"

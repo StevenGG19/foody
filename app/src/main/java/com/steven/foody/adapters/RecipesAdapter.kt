@@ -1,6 +1,5 @@
 package com.steven.foody.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat

@@ -34,4 +34,6 @@
     <string name="healthy">Healthy</string>
     <string name="dairy_free">Dairy free</string>
     <string name="cheap">Cheap</string>
+    <string name="save_to_favorite">Save to favorite</string>
+    <string name="no_favorites_recipes">No favorite recipes</string>
 </resources>
