@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
         <item name="colorOnPrimary">@color/colorAccent</item>
+        <item name="actionModeBackground">@color/contextualActionBarColor</item>
 
         <item name="colorSecondary">@color/colorAccent</item>
         <item name="colorSecondaryVariant">@color/colorPrimary</item>

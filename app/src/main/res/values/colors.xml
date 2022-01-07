@@ -23,4 +23,9 @@
     <color name="strokeColor">@color/lightMediumGray</color>
     <color name="cardBackground">@color/white</color>
     <color name="titleColor">@color/darker</color>
+    // Favorite status bar
+    <color name="statusBarColor">@color/colorPrimary</color>
+    <color name="contextualStatusBarColor">@color/darker</color>
+    <color name="contextualActionBarColor">@color/darkGray</color>
+    <color name="lightBackgroundColor">#106200EA</color>
 </resources>
