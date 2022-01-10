@@ -1,5 +1,6 @@
 package com.steven.foody.util
 
+import android.view.View
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -20,4 +21,12 @@ fun String?.parseHtml(): String {
         return "Summary not available"
     }
     return Jsoup.parse(this).text()
+}
+
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    this.visibility = View.INVISIBLE
 }

@@ -32,10 +32,12 @@
     <string name="apply">Apply</string>
     <string name="search">Search</string>
     <string name="healthy">Healthy</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="dairy_free">Dairy free</string>
     <string name="cheap">Cheap</string>
     <string name="save_to_favorite">Save to favorite</string>
     <string name="no_favorites_recipes">No favorite recipes</string>
     <string name="delete_favorite_menu">Delete favorite menu</string>
     <string name="delete_all">Delete all</string>
+    <string name="share">Share</string>
 </resources>
