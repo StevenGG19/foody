@@ -42,6 +42,7 @@ class FavoriteRecipeAdapter(
         holder.bind(recipe)
         rootView = holder.itemView.rootView
         myViewHolder.add(holder)
+        saveItemStateOnScroll(recipe, holder)
         /**
          * Single click listener
          */
@@ -67,13 +68,21 @@ class FavoriteRecipeAdapter(
                 applySelection(holder, recipe)
                 true
             } else {
-                multiSelection = false
-                false
+                applySelection(holder, recipe)
+                true
             }
         }
     }
 
     override fun getItemCount(): Int = favoriteList.size
+
+    private fun saveItemStateOnScroll(currentRecipe: FavoritesEntity, holder: FavoriteViewHolder) {
+        if (selectedRecipes.contains(currentRecipe)) {
+            changeRecipeStyle(holder, R.color.lightBackgroundColor, R.color.colorPrimary)
+        } else {
+            changeRecipeStyle(holder, R.color.cardBackground, R.color.strokeColor)
+            }
+    }
 
     fun setData(newData: List<FavoritesEntity>) {
         val recipesDiffUtil = RecipesDiffUtil(favoriteList, newData)
@@ -177,7 +186,10 @@ class FavoriteRecipeAdapter(
 
     private fun applyActionModeTitle() {
         when (selectedRecipes.size) {
-            0 -> mActionMode.finish()
+            0 -> {
+                multiSelection = false
+                mActionMode.finish()
+            }
             1 -> mActionMode.title = "1 item selected"
             else -> mActionMode.title = "${selectedRecipes.size} items selected"
         }

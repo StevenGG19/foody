@@ -33,29 +33,20 @@ class OverviewFragment : Fragment() {
         binding.txtTime.text = myBundle?.readyInMinutes.toString()
         binding.txtSummary.text = myBundle?.summary.parseHtml()
 
-        if (myBundle?.vegetarian == true) {
-            setColors(binding.imgCheckMark, binding.txtVegetable)
-        }
-        if (myBundle?.vegan == true) {
-            setColors(binding.imgCheckMarkVegan, binding.txtVegan)
-        }
-        if (myBundle?.glutenFree == true) {
-            setColors(binding.imgCheckMarkGluten, binding.txtGluten)
-        }
-        if (myBundle?.dairyFree == true) {
-            setColors(binding.imgCheckMarkDairy, binding.txtDairy)
-        }
-        if (myBundle?.veryHealthy == true) {
-            setColors(binding.imgCheckMarkHealthy, binding.txtHealthy)
-        }
-        if (myBundle?.cheap == true) {
-            setColors(binding.imgCheckMarkCheap, binding.txtCheap)
-        }
+        setColors(binding.imgCheckMark, binding.txtVegetable, myBundle?.vegetarian ?: false)
+        setColors(binding.imgCheckMarkVegan, binding.txtVegan, myBundle?.vegan ?: false)
+        setColors(binding.imgCheckMarkGluten, binding.txtGluten, myBundle?.glutenFree ?: false)
+        setColors(binding.imgCheckMarkDairy, binding.txtDairy, myBundle?.dairyFree ?: false)
+        setColors(binding.imgCheckMarkHealthy, binding.txtHealthy, myBundle?.veryHealthy ?: false)
+        setColors(binding.imgCheckMarkCheap, binding.txtCheap, myBundle?.cheap ?: false)
+
         return binding.root
     }
 
-    private fun setColors(imgCheckMark: ImageView, textView: TextView) {
-        imgCheckMark.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
-        textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+    private fun setColors(imgCheckMark: ImageView, textView: TextView, stateIsOn: Boolean) {
+        if (stateIsOn) {
+            imgCheckMark.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+            textView.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+        }
     }
 }

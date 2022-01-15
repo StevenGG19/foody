@@ -58,7 +58,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         binding.btnApply.setOnClickListener {
-            viewModel.saveMealAndDietType(
+            viewModel.saveMealAndDietTypeTemp(
                 mealTypeChip,
                 mealTypeChipId,
                 dietTypeChip,
@@ -73,7 +73,9 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     private fun updateChip(chipId: Int, chipGroup: ChipGroup) {
         if (chipId != 0) {
             try {
-                chipGroup.findViewById<Chip>(chipId).isChecked = true
+                val targetView = chipGroup.findViewById<Chip>(chipId)
+                targetView.isChecked = true
+                chipGroup.requestChildFocus(targetView, targetView)
             } catch (e: Exception) {
                 Log.d("BottomSheet", e.message.toString())
             }

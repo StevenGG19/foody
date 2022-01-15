@@ -10,27 +10,21 @@ import com.steven.foody.R
 import com.steven.foody.databinding.RecipesRowLayoutBinding
 import com.steven.foody.models.FoodRecipe
 import com.steven.foody.models.Result
-import com.steven.foody.util.OnRecipeClickListener
 import com.steven.foody.util.RecipesDiffUtil
 import com.steven.foody.util.parseHtml
 
-class RecipesAdapter(private val itemClickListener: OnRecipeClickListener<Result>) : RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
+class RecipesAdapter(private val click: (Result) -> Unit) :
+    RecyclerView.Adapter<RecipesAdapter.ViewHolder>() {
     private var recipes = emptyList<Result>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
             RecipesRowLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val holder = ViewHolder(itemBinding)
-        itemBinding.root.setOnClickListener {
-            val position = holder.adapterPosition.takeIf { it != DiffUtil.DiffResult.NO_POSITION }
-                ?: return@setOnClickListener
-            itemClickListener.onRecipeClick(recipes[position])
-        }
-        return holder
+        return ViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(recipes[position])
+        holder.bind(recipes[position], click)
     }
 
     override fun getItemCount(): Int = recipes.size
@@ -44,7 +38,7 @@ class RecipesAdapter(private val itemClickListener: OnRecipeClickListener<Result
 
     inner class ViewHolder(private val binding: RecipesRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(recipe: Result) {
+        fun bind(recipe: Result, click: (Result) -> Unit) {
             binding.txtTitle.text = recipe.title
             binding.txtDescription.text = recipe.summary.parseHtml()
             binding.txtFavorite.text = recipe.aggregateLikes.toString()
@@ -67,6 +61,7 @@ class RecipesAdapter(private val itemClickListener: OnRecipeClickListener<Result
                     )
                 )
             }
+            itemView.setOnClickListener { click(recipe) }
         }
     }
 }
